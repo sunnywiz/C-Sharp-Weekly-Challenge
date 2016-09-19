@@ -76,7 +76,10 @@ namespace CodeLou.CSharp.Week3.Challenge
 								throw new NotImplementedException();
 								break;
 							case ('R'):
-								var newReminder = reminderRepository.Create();
+
+						        var newReminder = ReadAReminderFromConsole(); 
+                                throw new NotImplementedException("Come back to this please!");
+								//var newReminder = reminderRepository.Create();
 								break;
 							default:
                                 //Note: The $"abc {variable} def" syntax below is new syntactic sugar in C# 6.0 that can be used 
@@ -100,5 +103,31 @@ namespace CodeLou.CSharp.Week3.Challenge
 			}
 			File.WriteAllText("Reminders.json", reminderRepository.ToJson());
 		}
-	}
+
+	    private static Reminder ReadAReminderFromConsole()
+        {
+            var startDate = GetMeADate("Start Date");
+            var endDate = GetMeADate("End Date");
+	        return null; 
+        }
+
+        private static DateTime GetMeADate(string label)
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter Your {0}", label);
+                var startDateString = Console.ReadLine();
+                DateTime theDate;
+                if (DateTime.TryParse(startDateString, out theDate))
+                {
+                    return theDate; 
+                }
+                else
+                {
+                    Console.WriteLine("I don't understand {0} as being a date, try again.",
+                        startDateString);
+                }
+            }
+        }
+    }
 }
