@@ -14,7 +14,7 @@ namespace CodeLou.CSharp.Week3.Challenge
 			_dictionary = new Dictionary<int, Reminder>();
 		}
 
-		public Reminder Create()
+		public void Save(Reminder reminder)
 		{
 			//Challenge: Can you find a more efficient way to do this?
 			var nextAvailableId = 0;
@@ -28,11 +28,8 @@ namespace CodeLou.CSharp.Week3.Challenge
 				nextAvailableId++;
 			}
 
-			var reminder = new Reminder();
 			reminder.Id = nextAvailableId;
-			_dictionary.Add(nextAvailableId, new Reminder());
-
-			return reminder;
+			_dictionary.Add(nextAvailableId, reminder);
 		}
 
         //Callenge: Are you finding that you are writing this same code many times? Is there a better way? 

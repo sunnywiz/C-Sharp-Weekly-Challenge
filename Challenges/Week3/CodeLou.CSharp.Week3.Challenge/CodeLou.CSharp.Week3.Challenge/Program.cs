@@ -78,8 +78,9 @@ namespace CodeLou.CSharp.Week3.Challenge
 							case ('R'):
 
 						        var newReminder = ReadAReminderFromConsole(); 
-                                throw new NotImplementedException("Come back to this please!");
-								//var newReminder = reminderRepository.Create();
+
+
+								reminderRepository.Save(newReminder);
 								break;
 							default:
                                 //Note: The $"abc {variable} def" syntax below is new syntactic sugar in C# 6.0 that can be used 
@@ -91,6 +92,7 @@ namespace CodeLou.CSharp.Week3.Challenge
 						
 						break;
 					case ('V'):
+
 					case ('F'):
 					case ('D'):
 						throw new NotImplementedException();
@@ -107,8 +109,12 @@ namespace CodeLou.CSharp.Week3.Challenge
 	    private static Reminder ReadAReminderFromConsole()
         {
             var startDate = GetMeADate("Start Date");
-            var endDate = GetMeADate("End Date");
-	        return null; 
+
+	        var reminder = new Reminder()
+	        {
+	            Start = startDate
+	        };
+	        return reminder; 
         }
 
         private static DateTime GetMeADate(string label)
